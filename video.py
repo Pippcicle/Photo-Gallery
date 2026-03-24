@@ -4,44 +4,46 @@ from PIL import Image
 
 
 image_folder = r"C:\\Users\\Pippa Smith\\Documents\\Coding\\OpenCV\\Photo Gallery"
-os.chdir = (image_folder)
+os.chdir(image_folder)
 path = image_folder
 height = 400
 width = 300
 
 image_files = []
-for file in os.listdir('.'):
+for file in os.listdir(path):
     if file.lower().endswith(('.png')):
         image_files.append(file)
 
-num_of_images = len(image_files)
+resized_images = []
 
 for file in image_files:
     img = Image.open(os.path.join(path,file))
+    img = img.convert('RGB')
     imgResized = img.resize(
-        (height,width),
+        (width,height),
         Image.Resampling.LANCZOS
     )
-    imgResized.save(file,'JPEG', quality = 95)
+    new_name = file.split('.')[0]+'.jpg'
+    imgResized.save(new_name,'JPEG', quality = 95)
+    resized_images.append(new_name)
+
 
 def VideoGenerator(): 
     video_name = 'Video.avi'
 
-    images = []
-    for img in os.listdir('.'):
-        if img.lower().endswith(('.png')):
-            images.append(img)
-
-    frame = cv2.imread(images[0])
+    resized_images.sort()
+    
+    frame = cv2.imread(resized_images[0])
     height,width,layers = frame.shape
     
-    video = cv2.VideoWriter(video_name, 0, 1,(width,height))
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    video = cv2.VideoWriter(video_name, fourcc, 1, (width, height))
 
-    for image in images : 
+    for image in resized_images : 
         video.write(cv2.imread(image))
 
     video.release()
-    cv2.destroyAllWindows
+    cv2.destroyAllWindows()
 
 VideoGenerator()
 
