@@ -83,6 +83,12 @@ Button(frame_images, text = "Image 2", command = lambda: load_image('img2.jpg'))
 Button(frame_images, text = "Image 3", command = lambda: load_image('img3.jpg')).grid(row = 0, column = 2, padx = 5)
 Button(frame_images, text = "Image 4", command = lambda: load_image('img4.jpg')).grid(row = 0, column = 3, padx = 5)
 Button(frame_images, text = "Image 5", command = lambda: load_image('img5.jpg')).grid(row = 0, column = 4, padx = 5)
+Button(frame_images, text = "Image 6", command = lambda: load_image('img6.jpg')).grid(row = 0, column = 5, padx = 5)
+Button(frame_images, text = "Image 7", command = lambda: load_image('img7.jpg')).grid(row = 0, column = 6, padx = 5)
+Button(frame_images, text = "Image 8", command = lambda: load_image('img8.jpg')).grid(row = 0, column = 7, padx = 5)
+Button(frame_images, text = "Image 9", command = lambda: load_image('img9.jpg')).grid(row = 0, column = 8, padx = 5)
+Button(frame_images, text = "Image 10", command = lambda: load_image('img10.jpg')).grid(row = 0, column = 9, padx = 5)
+
 
 frame_filters = Frame(window)
 frame_filters.pack(pady = 20)
